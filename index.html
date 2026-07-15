@@ -31,7 +31,7 @@
   html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     -webkit-font-smoothing:antialiased;}
-  body{padding-bottom:calc(78px + env(safe-area-inset-bottom));}
+  body{padding-bottom:calc(150px + env(safe-area-inset-bottom));}
   .app{max-width:480px;margin:0 auto;min-height:100vh;position:relative;}
 
   .topbar{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,var(--bg) 70%, rgba(23,21,15,0));
@@ -92,16 +92,16 @@
   .hist-row .d{color:var(--dim2);font-family:-apple-system,sans-serif;}
   .hist-empty{font-size:12px;color:var(--dim2);padding:4px 0;}
 
-  .savebar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:linear-gradient(0deg,var(--bg) 60%, rgba(23,21,15,0));
-    padding:10px 18px calc(14px + env(safe-area-inset-bottom));}
+  .bottom-dock{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--bg);}
+  .savebar{background:var(--bg);padding:12px 18px 10px;}
   .savebar-inner{max-width:480px;margin:0 auto;}
   .save-btn{width:100%;background:var(--accent);color:#1a0d08;border:none;border-radius:13px;padding:15px;
     font-size:14px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;}
   .save-btn:active{transform:scale(.98);}
   .save-btn.done{background:var(--good);}
 
-  .navbar{position:fixed;left:0;right:0;bottom:0;background:var(--panel);border-top:1px solid var(--line);
-    display:flex;z-index:40;padding-bottom:env(safe-area-inset-bottom);}
+  .navbar{background:var(--panel);border-top:1px solid var(--line);
+    display:flex;padding-bottom:env(safe-area-inset-bottom);}
   .navbtn{flex:1;text-align:center;padding:11px 0 9px;cursor:pointer;color:var(--dim2);}
   .navbtn.active{color:var(--accent);}
   .navbtn .ic{font-size:17px;display:block;}
@@ -158,15 +158,16 @@
     <div style="height:90px;"></div>
   </div>
 
-  <div class="savebar" id="saveBar">
-    <div class="savebar-inner">
-      <button class="save-btn" id="saveBtn">Guardar sesión</button>
+  <div class="bottom-dock">
+    <div class="savebar" id="saveBar">
+      <div class="savebar-inner">
+        <button class="save-btn" id="saveBtn">Guardar sesión</button>
+      </div>
     </div>
-  </div>
-
-  <div class="navbar">
-    <div class="navbtn active" data-view="train"><span class="ic">🏋️</span><span class="tx">Entrenar</span></div>
-    <div class="navbtn" data-view="hist"><span class="ic">📋</span><span class="tx">Historial</span></div>
+    <div class="navbar">
+      <div class="navbtn active" data-view="train"><span class="ic">🏋️</span><span class="tx">Entrenar</span></div>
+      <div class="navbtn" data-view="hist"><span class="ic">📋</span><span class="tx">Historial</span></div>
+    </div>
   </div>
 
   <div class="toast" id="toast"></div>
